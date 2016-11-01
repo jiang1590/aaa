@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style media="screen">
+        body{
+            margin: 0;
+        }
+
+        div{
+            width: 50px;
+            height:50px;
+            background: green;
+        }
+        #first{
+            position: absolute;
+            left: 100px;
+        }
+        #second{
+            position: absolute;
+            left: 100px;
+            top:80px;
+        }
+        #third{
+            position: absolute;
+            left: 100px;
+            top:140px;
+        }
+    </style>
+</head>
+<body>
+    <div id="first"></div>
+    <div id="second"></div>
+    <div id="third"></div>
+</body>
+<script type="text/javascript">
+    var divs = document.querySelectorAll('div');
+    var index = 0;
+    for (var i = 0; i < divs.length; i++) {
+        var mydiv = divs[i];
+        mydiv.amove = function () {
+            var currentOff = this.offsetLeft;
+            var a = this;
+            var timer = setInterval(function () {
+                a.style.left = currentOff + 'px';
+                currentOff ++;
+            },10);
+        }
+        mydiv.onclick = function () {
+            this.amove();
+        }
+    }
+
+
+
+
+
+
+    var timer = setInterval(function () {
+        var adiv = divs[index];
+        adiv.amove();
+        index++;
+        if(index == divs.length-1) {
+            clearInterval(timer);
+        }
+    },1000);
+
+
+</script>
+
+</html>
